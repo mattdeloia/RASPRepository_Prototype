@@ -28,7 +28,7 @@
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ## Ranger Fit Scores
-###### Ranger Fit Scores are a modeled output based on raw scores, value functions and weighting criteria. The Ranger Fit Scores presented here are for demonstration purpose. 
+###### Ranger Fit Scores are a modeled output based on raw scores, linear value functions based on objectives and weightings to emphasize specific measures. The Ranger Fit Scores presented here are for demonstration purpose. 
 
 ## Scatter Plot 
 
