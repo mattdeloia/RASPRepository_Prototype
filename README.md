@@ -1,6 +1,6 @@
 ###### Prepared by Matt DeLoia, Northrop Grumman  - 3/31/2020
 
-##### This is a demonstration of **R and RMarkdown** functions and published as a static webpage through **GitHub Pages.**  The visualizations and table are based on mock data.  
+##### This is a demonstration of **R and RMarkdown** functions and published as a static webpage through **GitHub Pages.**  The visualizations and table are based on **mock data.**  
 
 ### Personality
 
