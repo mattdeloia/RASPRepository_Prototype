@@ -131,6 +131,7 @@ df5 %>% group_by(ID, Category) %>%
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank()) +
      ylim(0,1.2) +
+    ylab("Ranger Fit Score") +
      coord_flip() + 
      facet_grid(Category ~., scales="free")
 
