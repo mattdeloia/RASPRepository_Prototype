@@ -1,12 +1,16 @@
 ---
 title: "RASP_Dashboard_Prototype"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+output:
+    output: github_document
+   
 ---
 
 ```{r setup, include=FALSE}
+
+# output: flexdashboard::flex_dashboard:
+ #   orientation: columns
+  #  vertical_layout: fill
+
 library(tidyverse)
 library(dplyr)
 library(readxl)
@@ -18,6 +22,8 @@ library(lubridate)
 library(params)
 library(plotly)
 library(kableExtra)
+
+
 
 df<- read_excel("RASP_MockDataset.xls")
 
@@ -63,14 +69,12 @@ Row {.tabset .tabset-fade}
 ### Scatter Plot of Ranger Fit Scores
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-p <- df5 %>% group_by(ID, Category) %>% summarise(CyberFitScore=sum(CyberFit, na.rm = TRUE)) %>%  spread (key= "Category", value="CyberFitScore") %>% mutate(Fit = if_else((Personality > .7 & Cognitive > .7), "Best Fit", if_else( (Personality>.7|Cognitive>.7), "Good Fit", "Poor Fit"))) %>% 
+df5 %>% group_by(ID, Category) %>% summarise(CyberFitScore=sum(CyberFit, na.rm = TRUE)) %>%  spread (key= "Category", value="CyberFitScore") %>% mutate(Fit = if_else((Personality > .7 & Cognitive > .7), "Best Fit", if_else( (Personality>.7|Cognitive>.7), "Good Fit", "Poor Fit"))) %>% 
      ggplot() +
      geom_point(aes(label=ID, color=Fit, x=Cognitive,y=Personality)) +
      geom_hline(aes(yintercept=.7), color="blue", linetype="dashed") +
      geom_vline(aes(xintercept=.7), color="blue", linetype="dashed") +
      scale_color_manual(label="Cyber Fit", values = c("darkgreen", "lightgreen", "gray"))
- 
-ggplotly(p)
 ```
 
 ### Ranger Fit Table
