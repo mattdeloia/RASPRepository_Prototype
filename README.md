@@ -19,21 +19,20 @@
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-### Results from the Ranger Fit model for A1000.
+### Ranger Fit Scores 
+
+###### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions, and weightings to emphasize specific measures. 
 
 ##### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
-###### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive). 
 
+## Ranger Fit Scores for A1000.
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-### Ranger Fit Scores (Total Repository)
-###### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions based on objectives and weightings to emphasize specific measures. 
-
-### Scatter Plot 
+### Scatter Plot of Ranger Fit Scores (Total Repository)
 
 ![](RASP_MarkdownDashboard_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-#### Ranger Fit Table
+### Ranger Fit Table
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 
