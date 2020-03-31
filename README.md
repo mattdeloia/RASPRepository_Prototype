@@ -26,14 +26,14 @@
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-## Ranger Fit Scores (Total Repository)
+### Ranger Fit Scores (Total Repository)
 ###### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions based on objectives and weightings to emphasize specific measures. 
 
-## Scatter Plot 
+### Scatter Plot 
 
 ![](RASP_MarkdownDashboard_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-### Ranger Fit Table
+#### Ranger Fit Table
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 
