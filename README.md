@@ -30,4 +30,4 @@ Army Research Institute and Northrop Grumman - 3/23/2020
 
 ## 
 
-![](RangerInsignia.jpg | width=100)
+![](RangerInsignia.jpg width="100" height="100")
