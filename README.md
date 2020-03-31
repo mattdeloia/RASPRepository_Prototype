@@ -27,7 +27,3 @@ Army Research Institute and Northrop Grumman - 3/23/2020
 ###### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
-
-## 
-
-![](RangerInsignia.jpg width="100" height="100")
