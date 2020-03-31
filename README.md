@@ -21,14 +21,13 @@
 
 ### Results from the Ranger Fit model for A1000.
 
-###### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive). The objective score is 1.0. The dashed blue line represents a threshold Ranger fit score, above which suggests a good fit.
-
-###### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
+##### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
+###### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive). 
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-## Ranger Fit Scores
-###### Ranger Fit Scores are a modeled output based on raw scores, linear value functions based on objectives and weightings to emphasize specific measures. The Ranger Fit Scores presented here are for demonstration purpose. 
+## Ranger Fit Scores (Total Repository)
+###### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions based on objectives and weightings to emphasize specific measures. 
 
 ## Scatter Plot 
 
