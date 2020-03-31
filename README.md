@@ -1,11 +1,6 @@
 ## RASP Repository Reporting Prototype
 
-### Individual Report
-
-RASP\_Report\_Prototype
-================
-Army Research Institute and Northrop Grumman
-3/23/2020
+Army Research Institute and Northrop Grumman - 3/23/2020
 
 ## Individual Report for: A1000
 
@@ -35,4 +30,4 @@ Army Research Institute and Northrop Grumman
 
 ## 
 
-![](RangerInsignia.jpg)
+![](RangerInsignia.jpg | width=100)
