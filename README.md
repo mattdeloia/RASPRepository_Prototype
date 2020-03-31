@@ -1,5 +1,5 @@
 #### Army Research Institute and Northrop Grumman - 3/23/2020
-##### This is a demonstration of R and RMarkdown features and published on GitHub Pages (website).  Reports can generate into formats of your choice (html, pdf, Word doc).  This individual report is based on notional Ranger candidate "A1000" results.
+##### This is a demonstration of **R and RMarkdown** functions and published as a static webpage through **GitHub Pages.**  Reports can also generate into formats of preferred choice (html, pdf, Word doc).  The individual report is based on notional candidate, "A1000," results.
 
 ## Individual Report for: A1000
 
