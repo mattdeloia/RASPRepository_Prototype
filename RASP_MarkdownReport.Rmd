@@ -1,0 +1,140 @@
+---
+title: "RASP_Report_Prototype"
+author: "Army Research Institute and Northrop Grumman"
+date: "3/23/2020"
+output:
+  output: github_document
+params:
+  id: A1000
+---
+
+```{r setup, include=FALSE}
+#Load Packages
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(DT)
+library(tm)
+library(knitr)
+library(pander)
+library(lubridate)
+library(params)
+
+#Read Data Set
+df<- read_excel("RASP_MockDataset.xls")
+
+Personality <- c ("Complexity", "BreadthofInterest", "Innovation", "Tolerance", "Empathy", "Anxiety", "Cooperativeness", "Sociability", "SocialConfidence", "EnergyLevel", "SocialAstuteness", "RiskTaking", "Organization", "TraditionalValues", "Responsibility")
+Cognitive <- c ("Information", "Comprehension", "Arithmetic", "Similarities", "Vocabulary", "DigitSymbol", "PictureCompletion", "Spatial", "PictureArrangement", "ObjectAssembly")
+CyberFitPersonalityDimensions <- c("Complexity", "BreadthofInterest", "Innovation", "Tolerance","Cooperativeness","RiskTaking","Organization", "Responsibility")
+CyberFitCognitiveDimensions <- c("Arithmetic","DigitSymbol", "PictureCompletion", "Spatial", "PictureArrangement", "ObjectAssembly")
+
+idlist<- df %>% distinct(ID)
+id <- "A1000"
+
+# Assign Facets to the Personality and Cognitive Dimensions
+df2 <- df %>% gather (Complexity:ObjectAssembly, key = Dimension, value = Score) %>%
+     mutate(Facet = if_else(Dimension %in% c("Complexity", "BreadthofInterest", "Innovation", "Tolerance"), "Analytical", 
+     if_else  (Dimension %in% c("Empathy", "Anxiety", "Cooperativeness"), "Emotional", 
+     if_else(Dimension %in% c("Sociability", "SocialConfidence", "EnergyLevel"), "Extroverted", 
+     if_else(Dimension %in% c("SocialAstuteness", "RiskTaking"), "Opportunistic", 
+     if_else(Dimension %in% c("Organization", "TraditionalValues", "Responsibility"), "Dependable", 
+     if_else(Dimension %in% c("Information", "Comprehension", "Arithmetic", "Similarities", "Vocabulary"), "Verbal", 
+     if_else(Dimension %in% c( "DigitSymbol", "PictureCompletion", "Spatial", "PictureArrangement", "ObjectAssembly"), "Performance", "NA"))))))), 
+     Category = if_else(Dimension %in% Personality, "Personality", "Cognitive"))
+
+#Determine Summary Stats (mean and sd) for the Dimensions
+df3 <- df2  %>%  group_by(Dimension) %>% summarise("Mean" = mean(Score), "SD"=sd(Score))
+
+#Determine threshold CyberFitGoal and Weights for select Cyber Fit Dimensions
+df3b <- df3 %>% filter(Dimension %in% c(CyberFitCognitiveDimensions, CyberFitPersonalityDimensions)) %>% 
+     mutate("CyberFitGoal" = (Mean + 2*SD), Weight = if_else(Dimension %in% c(CyberFitPersonalityDimensions), 1*1/8, 1*1/5))
+
+df4 <- df2 %>% left_join((df3)) %>% left_join(df3b)
+
+#Calculate Cyber Fit Score
+df5 <- df4 %>% mutate (CyberFitScore = (Weight*(Score/CyberFitGoal)))
+
+#Rank order Cyber Fit Score
+df6 <- df5 %>% group_by(ID) %>% summarise(CyberFitScore=sum(CyberFitScore, na.rm = TRUE)) %>% mutate(Rank = rank(-CyberFitScore))
+
+rank <- df6 %>% filter(ID==params$id) %>% select(Rank)
+population<-df6 %>% count()
+
+```
+
+## Individual Report for: `r params$id`
+
+### Personality
+
+##### Personality: This graph displays results from the JPI-R Personality Test in **green bars**.
+
+###### The **RED dots** represent the average of all Ranger Candidates. 
+
+```{r echo=FALSE, fig.height=6, fig.width=6, message=FALSE, warning=FALSE}
+# The **BLUE dots** represent the measures used to determine the cyber fit score and the objective value for the measure. 
+
+df4 %>%  filter(ID == params$id, Dimension %in% Personality) %>%  
+     mutate(Dimension=reorder(Dimension, Score, FUN=sum)) %>% 
+     ggplot() + 
+     geom_col(aes(x=Dimension, y=Score, fill=Score)) +
+     geom_point(aes(x=Dimension, y=Mean), color="red", size= 2) +
+     #geom_point(aes(x=Dimension, y=CyberFitGoal), color="blue", size= 3) +
+     geom_text(aes( x=Dimension, y=Score, label = round(Score, 2), ),  hjust = 1,  size=3.5, color="black") + 
+     scale_fill_gradient(low="lightgreen", high="darkgreen") + 
+     ylab("Percentile") + xlab("") + ylim(0,100) +
+     theme(legend.title= element_text(color="black", size=10), legend.position = "blank") +
+     coord_flip() + 
+     facet_grid(Facet~., scales = "free")
+```
+
+### Cognitive
+
+##### Cognitive: This graph displays results from the MAB II Cognitive Test in **green bars**.  
+
+###### The **RED dots** represent the average of all Ranger Candidates.    
+
+```{r echo=FALSE, fig.height=6, fig.width=6, message=FALSE, warning=FALSE}
+#The **BLUE dots** represent the measures used to determine the cyber fit score and the objective value for the measure.
+
+df4 %>%  filter(ID == params$id, Dimension %in% Cognitive) %>%  
+     mutate(Dimension=reorder(Dimension, Score, FUN=sum)) %>% 
+     ggplot() + 
+     geom_col(aes(x=Dimension, y=Score, fill=Score)) +
+     geom_point(aes(x=Dimension, y=Mean), color="red", size= 2) +
+     #geom_point(aes(x=Dimension, y=CyberFitGoal), color="blue", size= 3) +
+     geom_text(aes( x=Dimension, y=Score, label = round(Score, 2), ),  hjust = 1,  size=3.5, color="black") +
+     scale_fill_gradient(low="lightgreen", high="darkgreen") + 
+     theme(legend.title= element_text(color="black", size=10), legend.position = "blank") +
+     ylab("Percentile") + xlab("") + ylim(0,100) +
+     coord_flip() + 
+     facet_grid(Facet~., scales = "free")
+```
+
+## Results from the Ranger Fit model for `r params$id`.  
+###### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive).  The objective score is 1.0.  The dashed blue line represents a threshold Ranger fit score, above which suggests a good fit.  
+
+###### The **GREEN dots** represents the Ranger Fit Scores for **`r params$id`** in each category.  The total RASP candidate distribution is displayed by the boxplot.  This individual's Ranger Fit Score ranks **`r rank$Rank`** of **`r population$n`** in the RASP data repository.
+
+```{r echo=FALSE, fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+df5 %>% group_by(ID, Category) %>% 
+     summarise(CyberFitScore=sum(CyberFitScore, na.rm = TRUE)) %>%  
+     ggplot(aes(y=CyberFitScore, x=Category)) + 
+     geom_boxplot(fill="gray") + 
+     geom_point(aes(size = ifelse(ID == params$id, params$id, "RASP All"), color = ifelse(ID == params$id, params$id, "RASP All")))  + 
+     scale_size_manual(values=c(4,-1)) +  
+     scale_color_manual (name = "Scale", values=c("green", "lightgray")) +
+     geom_hline(aes(yintercept=.7), color="blue", linetype="dashed") +
+     geom_text(aes(label=(ifelse(ID == params$id, params$id, ""))), angle = "45", fill="white", vjust=0, hjust=-.31, size=4, color="green", size=3) +
+     geom_text(aes(label=(ifelse(ID == params$id, round(CyberFitScore, 2), ""))), vjust=2, size=4, color="black", size=3) +
+     theme(legend.title= element_text(color="black", size=10), legend.position = "blank")  + 
+     theme(axis.title.y = element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()) +
+     ylim(0,1.2) +
+     coord_flip() + 
+     facet_grid(Category ~., scales="free")
+
+```
+
+## 
+![](RangerInsignia.jpg){width=150px}

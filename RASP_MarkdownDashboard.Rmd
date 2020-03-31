@@ -1,0 +1,96 @@
+---
+title: "RASP_Dashboard_Prototype"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(DT)
+library(tm)
+library(knitr)
+library(pander)
+library(lubridate)
+library(params)
+library(plotly)
+library(kableExtra)
+
+df<- read_excel("RASP_MockDataset.xls")
+
+Personality <- c ("Complexity", "BreadthofInterest", "Innovation", "Tolerance", "Empathy", "Anxiety", "Cooperativeness", "Sociability", "SocialConfidence", "EnergyLevel", "SocialAstuteness", "RiskTaking", "Organization", "TraditionalValues", "Responsibility")
+Cognitive <- c ("Information", "Comprehension", "Arithmetic", "Similarities", "Vocabulary", "DigitSymbol", "PictureCompletion", "Spatial", "PictureArrangement", "ObjectAssembly")
+CyberFitPersonalityDimensions <- c("Complexity", "BreadthofInterest", "Innovation", "Tolerance","Cooperativeness","RiskTaking","Organization", "Responsibility")
+CyberFitCognitiveDimensions <- c("Arithmetic","DigitSymbol", "PictureCompletion", "Spatial", "PictureArrangement", "ObjectAssembly")
+
+idlist<- df %>% distinct(ID)
+id <- "A1000"
+
+# Assign Facets to the Personality and Cognitive Dimensions
+df2 <- df %>% gather (Complexity:ObjectAssembly, key = Dimension, value = Score) %>%
+     mutate(Facet = if_else(Dimension %in% c("Complexity", "BreadthofInterest", "Innovation", "Tolerance"), "Analytical", 
+     if_else  (Dimension %in% c("Empathy", "Anxiety", "Cooperativeness"), "Emotional", 
+     if_else(Dimension %in% c("Sociability", "SocialConfidence", "EnergyLevel"), "Extroverted", 
+     if_else(Dimension %in% c("SocialAstuteness", "RiskTaking"), "Opportunistic", 
+     if_else(Dimension %in% c("Organization", "TraditionalValues", "Responsibility"), "Dependable", 
+     if_else(Dimension %in% c("Information", "Comprehension", "Arithmetic", "Similarities", "Vocabulary"), "Verbal", 
+     if_else(Dimension %in% c( "DigitSymbol", "PictureCompletion", "Spatial", "PictureArrangement", "ObjectAssembly"), "Performance", "NA"))))))), 
+     Category = if_else(Dimension %in% Personality, "Personality", "Cognitive"))
+
+#Determine Summary Stats (mean and sd) for the Dimensions
+df3 <- df2  %>%  group_by(Dimension) %>% summarise("Mean" = mean(Score), "SD"=sd(Score))
+
+#Determine threshold CyberFitGoal and Weights for select Cyber Fit Dimensions
+df3b <- df3 %>% filter(Dimension %in% c(CyberFitCognitiveDimensions, CyberFitPersonalityDimensions)) %>% 
+     mutate("CyberFitGoal" = (Mean + 2*SD), Weight = if_else(Dimension %in% c(CyberFitPersonalityDimensions), 1*1/8, 1*1/5))
+
+df4 <- df2 %>% left_join((df3)) %>% left_join(df3b)
+
+#Calculate Cyber Fit Score
+df5 <- df4 %>% mutate (CyberFit = (Weight*(Score/CyberFitGoal)))
+
+#Rank order Cyber Fit Score
+df6 <- df5 %>% group_by(ID) %>% summarise(CyberFitScore=sum(CyberFit, na.rm = TRUE)) %>% mutate(Rank = rank(-CyberFitScore))
+
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Scatter Plot of Ranger Fit Scores
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+p <- df5 %>% group_by(ID, Category) %>% summarise(CyberFitScore=sum(CyberFit, na.rm = TRUE)) %>%  spread (key= "Category", value="CyberFitScore") %>% mutate(Fit = if_else((Personality > .7 & Cognitive > .7), "Best Fit", if_else( (Personality>.7|Cognitive>.7), "Good Fit", "Poor Fit"))) %>% 
+     ggplot() +
+     geom_point(aes(label=ID, color=Fit, x=Cognitive,y=Personality)) +
+     geom_hline(aes(yintercept=.7), color="blue", linetype="dashed") +
+     geom_vline(aes(xintercept=.7), color="blue", linetype="dashed") +
+     scale_color_manual(label="Cyber Fit", values = c("darkgreen", "lightgreen", "gray"))
+ 
+ggplotly(p)
+```
+
+### Ranger Fit Table
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df4b<- df4 %>% group_by(ID, Facet) %>% summarise(Score = round(mean(Score),digits=0)) %>% spread (key="Facet", value="Score")
+df5b <- df5 %>% group_by(ID, Category) %>% summarise(CyberFit = round(sum(CyberFit, na.rm = TRUE), 2)) %>% spread (key="Category", value="CyberFit")
+
+
+df7 <- df6 %>% select (ID, Rank) %>% left_join(df5b) %>% left_join(df4b)
+
+colnames(df7)[colnames(df7) == "Cognitive"] <- "Fit_Cognitive" 
+colnames(df7)[colnames(df7) == "Personality"] <- "Fit_Personality"
+colnames(df7)[colnames(df7) == "Rank"] <- "Fit_Rank"
+
+
+df7 %>% arrange(Fit_Rank) %>% kable %>% kable_styling (bootstrap_options = c("striped", "hover", "condensed"), fixed_thead = T) %>% 
+  add_header_above(c(" " = 1, "Ranger Fit Scores" = 3, "Personality" = 5, "Cognitive" = 2)) %>% 
+     pack_rows("Best Fit", 1, 20) %>%
+  pack_rows("Good Fit", 21, 27) %>% 
+      pack_rows("Poor Fit", 28, 100)
+```
+
