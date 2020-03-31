@@ -1,11 +1,10 @@
-#### Army Research Institute and Northrop Grumman - 3/23/2020
-##### This is a demonstration of **R and RMarkdown** functions and published as a static webpage through **GitHub Pages.**  The reports presented are based on mock data.
+###### Army Research Institute and Northrop Grumman - 3/23/2020
 
-## Individual Report for: A1000
+##### This is a demonstration of **R and RMarkdown** functions and published as a static webpage through **GitHub Pages.**  
 
 ### Personality
 
-##### Personality: This graph displays results from the JPI-R Personality Test in **green bars**.
+##### Personality: This graph displays a Ranger Candidate's results from the JPI-R Personality Test in **green bars**.
 
 ##### The **RED dots** represent the average of all Ranger Candidates.
 
@@ -13,7 +12,7 @@
 
 ### Cognitive
 
-##### Cognitive: This graph displays results from the MAB II Cognitive Test in **green bars**.
+##### Cognitive: This graph displays a Ranger Candidate's results from the MAB II Cognitive Test in **green bars**.
 
 ##### The **RED dots** represent the average of all Ranger Candidates.
 
@@ -23,7 +22,6 @@
 
 #### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions, and weightings to emphasize specific measures. 
 
-### Ranger Fit Scores for A1000.
 #### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
