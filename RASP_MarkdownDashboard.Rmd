@@ -2,7 +2,7 @@
 title: "RASP_Dashboard_Prototype"
 output:
     output: github_document
-   
+always_allow_html: true   
 ---
 
 ```{r setup, include=FALSE}
@@ -74,7 +74,7 @@ df5 %>% group_by(ID, Category) %>% summarise(CyberFitScore=sum(CyberFit, na.rm =
      geom_point(aes(label=ID, color=Fit, x=Cognitive,y=Personality)) +
      geom_hline(aes(yintercept=.7), color="blue", linetype="dashed") +
      geom_vline(aes(xintercept=.7), color="blue", linetype="dashed") +
-     scale_color_manual(label="Cyber Fit", values = c("darkgreen", "lightgreen", "gray"))
+     scale_color_manual(values = c("darkgreen", "lightgreen", "gray"))
 ```
 
 ### Ranger Fit Table
