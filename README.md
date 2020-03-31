@@ -4,7 +4,7 @@
 
 ### Personality
 
-##### Personality: This graph displays a Ranger Candidate's results from the JPI-R Personality Test in **green bars**.
+##### This graph displays a Ranger Candidate's results from the JPI-R Personality Test in **green bars**.
 
 ##### The **RED dots** represent the average of all Ranger Candidates.
 
@@ -12,7 +12,7 @@
 
 ### Cognitive
 
-##### Cognitive: This graph displays a Ranger Candidate's results from the MAB II Cognitive Test in **green bars**.
+##### This graph displays a Ranger Candidate's results from the MAB II Cognitive Test in **green bars**.
 
 ##### The **RED dots** represent the average of all Ranger Candidates.
 
