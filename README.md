@@ -1,4 +1,4 @@
-Army Research Institute and Northrop Grumman - 3/23/2020
+#### Army Research Institute and Northrop Grumman - 3/23/2020
 
 ## Individual Report for: A1000
 
@@ -20,8 +20,8 @@ Army Research Institute and Northrop Grumman - 3/23/2020
 
 ### Results from the Ranger Fit model for A1000.
 
-##### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive). The objective score is 1.0. The dashed blue line represents a threshold Ranger fit score, above which suggests a good fit.
+###### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive). The objective score is 1.0. The dashed blue line represents a threshold Ranger fit score, above which suggests a good fit.
 
-##### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
+###### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
