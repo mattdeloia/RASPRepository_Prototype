@@ -4,17 +4,13 @@
 
 ### Personality
 
-##### This graph displays a Ranger Candidate's results from the JPI-R Personality Test in **green bars**.
-
-##### The **RED dots** represent the average of all Ranger Candidates.
+##### This graph displays a Ranger Candidate's results from the JPI-R Personality Test in **green bars**.  The **RED dots** represent the average of all Ranger Candidates.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ### Cognitive
 
-##### This graph displays a Ranger Candidate's results from the MAB II Cognitive Test in **green bars**.
-
-##### The **RED dots** represent the average of all Ranger Candidates.
+##### This graph displays a Ranger Candidate's results from the MAB II Cognitive Test in **green bars**.  The **RED dots** represent the average of all Ranger Candidates.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
@@ -22,7 +18,9 @@
 
 ##### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions, and weightings to emphasize specific measures. 
 
-##### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
+* The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. 
+* The total RASP candidate distribution is displayed by the boxplot. 
+* This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
