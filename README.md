@@ -1,37 +1,38 @@
 ## RASP Repository Reporting Prototype
 
-You can use the [editor on GitHub](https://github.com/mattdeloia/RASPRepository_Prototype/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
 ### Individual Report
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+RASP\_Report\_Prototype
+================
+Army Research Institute and Northrop Grumman
+3/23/2020
 
-```markdown
-Syntax highlighted code block
+## Individual Report for: A1000
 
-# Header 1
-## Header 2
-### Header 3
+### Personality
 
-- Bulleted
-- List
+##### Personality: This graph displays results from the JPI-R Personality Test in **green bars**.
 
-1. Numbered
-2. List
+###### The **RED dots** represent the average of all Ranger Candidates.
 
-**Bold** and _Italic_ and `Code` text
+![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-[Link](url) and ![Image](src)
-```
+### Cognitive
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+##### Cognitive: This graph displays results from the MAB II Cognitive Test in **green bars**.
 
-### Jekyll Themes
+###### The **RED dots** represent the average of all Ranger Candidates.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mattdeloia/RASPRepository_Prototype/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-### Support or Contact
+## Results from the Ranger Fit model for A1000.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+###### Ranger Fit Scores are weighted scores based on multiple measures within each category (personality and cognitive). The objective score is 1.0. The dashed blue line represents a threshold Ranger fit score, above which suggests a good fit.
+
+###### The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. The total RASP candidate distribution is displayed by the boxplot. This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
+
+![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+## 
+
+![](RangerInsignia.jpg)
