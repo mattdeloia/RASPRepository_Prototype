@@ -4,31 +4,31 @@
 
 ### Personality
 
-##### This graph displays a Ranger Candidate's results from the JPI-R Personality Test in **green bars**.  The **RED dots** represent the average of all Ranger Candidates.
+##### This graph displays a RGR Candidate's results from the JPI-R Personality Test in **green bars**.  The **RED dots** represent the average of all RGR Candidates.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ### Cognitive
 
-##### This graph displays a Ranger Candidate's results from the MAB II Cognitive Test in **green bars**.  The **RED dots** represent the average of all Ranger Candidates.
+##### This graph displays a RGR Candidate's results from the MAB II Cognitive Test in **green bars**.  The **RED dots** represent the average of all RGR Candidates.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-### Ranger Fit Scores 
+### RGR Fit Scores 
 
-##### Ranger Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions, and weightings to emphasize specific measures. 
+##### RGR Fit Scores are a modeled output based on raw scores (personality and cognitive), linear value functions, and weightings to emphasize specific measures. 
 
-* The **GREEN dots** represents the Ranger Fit Scores for **A1000** in each category. 
+* The **GREEN dots** represents the RGR Fit Scores for **A1000** in each category. 
 * The total RASP candidate distribution is displayed by the boxplot. 
-* This individual’s Ranger Fit Score ranks **10** of **100** in the RASP data repository.
+* This individual’s RGR Fit Score ranks **10** of **100** in the RASP data repository.
 
 ![](RASP_MarkdownReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-### Scatter Plot of Ranger Fit Scores (Total Repository)
+### Scatter Plot of RGR Fit Scores (Total Repository)
 
 ![](RASP_MarkdownDashboard_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-### Ranger Fit Table
+### RGR Fit Table
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 
@@ -44,7 +44,7 @@
 
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 
-Ranger Fit Scores
+RGR Fit Scores
 
 </div>
 
